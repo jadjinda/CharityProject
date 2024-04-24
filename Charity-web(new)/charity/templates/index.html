@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block content %}
+       {% for projet in projets %}
+                <div class="row">
+                    <div class="card col-md-4" style="width: 18rem;">
+                        <img src="{{ url_for('charity_web.static', filename= 'charity_img/' + projet.image) }}" alt="{{ projet.libelle }}" class="card-img-top" >
+                        <div class="card-body">
+                            <h5 class="card-title">{{projet.libelle}}</h5>
+                           <p class="card-text">{{ projet.description }}</p>
+                           <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+       {% endfor %}
+{% endblock %}
