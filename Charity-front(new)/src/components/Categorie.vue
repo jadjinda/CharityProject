@@ -46,23 +46,19 @@ export default {
           }).catch((error)=>{
             console.log(error)})
     },
-    async updateCategorie(cat){
+    async showModal(cat){
+      this.categorie = cat
       const modalDiv = document.getElementById('myModal');
       if(modalDiv!= null){
         modalDiv.style.display = 'block'
-        await axios.put("http://127.0.0.1:5000/api/charity/update/"+cat.id,this.data)
-               .then(response=>{
-                    console.log("response",response.data);
-                    this.allCategorie();
-               }).catch((error)=>{
-                    console.log(error)})
       }
     },
-    async update(cat){
-      await axios.put("http://127.0.0.1:5000/api/charity/update/"+cat.id,this.data)
+    async updateCategorie(cat){
+      await axios.put("http://127.0.0.1:5000/api/charity/update/"+cat.id)
                .then(response=>{
                     console.log("response",response.data);
                     this.allCategorie();
+                    this.CloseModal()
                }).catch((error)=>{
                     console.log(error)})
     },
@@ -93,7 +89,7 @@ export default {
       <th>{{index+1}}</th>
       <td>{{item.libelle}}</td>
       <td>
-        <button type="button" v-on:click="updateCategorie(item)" class="btn btn-warning" >Modifier</button>
+        <button type="button" v-on:click="showModal(item)" class="btn btn-warning" >Modifier</button>
         <button type="button" v-on:click="deleteCategorie(item)" class="btn btn-danger m-1">Supprimer</button>
       </td>
     </tr>
@@ -120,7 +116,7 @@ export default {
           <i class="fas fa-window-close"></i>
         </a>
       </div>
-      <form>
+      <form @submit.prevent="updateCategorie">
         <div class="form-row m-3">
           <div class="col">
             <label for="libelle">Libelle</label>
