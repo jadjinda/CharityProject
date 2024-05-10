@@ -55,7 +55,7 @@ export default {
       })
     },
     getUrlImage(monImage){
-     return 'http://127.0.0.1:5000/charity/static/charity_img' + monImage
+     return 'http://127.0.0.1:5000/charity/static/image/' + monImage
     }
   },
   props: {}
@@ -81,7 +81,8 @@ export default {
       <th>{{ index + 1}}</th>
       <td>{{ item.libelle }}</td>
       <td>{{ item.description }}</td>
-      <td><img :src="getUrlImage(item.image)" :alt="item.libelle"></td>
+      <td>{{ item.categorie }}</td>
+      <td><img :src="getUrlImage(item.image)" :alt="item.libelle" width='50' height='20'></td>
       <td>
         <button type="button" class="btn btn-warning">Modifier</button>
         <button type="button" class="btn btn-danger m-1">Supprimer</button>

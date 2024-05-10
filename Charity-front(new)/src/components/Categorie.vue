@@ -53,8 +53,9 @@ export default {
         modalDiv.style.display = 'block'
       }
     },
-    async updateCategorie(cat){
-      await axios.put("http://127.0.0.1:5000/api/charity/update/"+cat.id)
+    async updateCategorie(){
+      console.log('Catégorie update',this.categorie)
+      await axios.put("http://127.0.0.1:5000/api/charity/update/"+this.categorie.id, this.categories)
                .then(response=>{
                     console.log("response",response.data);
                     this.allCategorie();
@@ -123,7 +124,7 @@ export default {
             <input type="text" id="nom" name="nom" class="form-control" v-model="categorie.libelle" placeholder="libelle...">
           </div>
         </div>
-        <button type="button" class="btn btn-outline-primary m-4">Modifier</button>
+        <button type="submit" class="btn btn-outline-primary m-4">Modifier</button>
         <button type="reset" class="btn btn-outline-danger m-2">Annuler</button>
       </form>
     </div>

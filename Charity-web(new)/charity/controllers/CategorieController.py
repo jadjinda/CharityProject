@@ -34,6 +34,7 @@ class CategorieController:
             categorie = Categorie.query.get(categorie_id)
             if categorie:
                 categorie.libelle = data['libelle']
+                #db.session.save()
                 db.session.commit()
                 return jsonify({'message': 'Catégorie mise à jour avec succès'}), 200
             else:

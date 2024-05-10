@@ -28,6 +28,7 @@ class ProjetController:
             projet = self.projet_model(libelle=libelle, description=description,
                                        categorie_id=categorie_id)
             projet.save_image(image)
+            db.session.add(projet)
             db.session.commit()
 
             return jsonify({'message': 'Projet créé avec success'}), 201
