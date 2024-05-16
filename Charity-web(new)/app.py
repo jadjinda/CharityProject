@@ -29,14 +29,13 @@ migrate = Migrate(app, db)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
-
 #Specifier la vue de connexion
 login_manager.login_view = 'auth.login'
 
 from charity.models.categorie import Categorie
 from charity.models.projet import Projet
 from accounts.models.User import User
-
+from charity.models.don import Don
 
 @login_manager.user_loader
 def load_user(user_id):

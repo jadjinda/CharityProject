@@ -2,15 +2,18 @@
 
 {% block content %}
        {% for projet in projets %}
-                <div class="row col-sm-6">
-                    <div class="card col-md-4" style="width: 18rem;">
+           <div class="container-fluid">
+               <div class="row">
+                    <div class="card m-4 p-2" style="width: 20rem;">
                         <img src="{{ url_for('charity_web.static', filename= 'charity_img/' + projet.image) }}" alt="{{ projet.libelle }}" class="card-img-top" >
                         <div class="card-body">
-                            <h5 class="card-title">{{projet.libelle}}</h5>
+                            <h5 class="card-title">{{ projet.libelle }}</h5>
                            <p class="card-text">{{ projet.description }}</p>
-                           <a href="{{url_for('charity.')}}" class="btn btn-primary">Details</a>
+                           <a href="{{ url_for('charity_web.details', projetId=projet.id) }}" class="btn btn-primary">Details</a>
                         </div>
                     </div>
                 </div>
+           </div>
+
        {% endfor %}
 {% endblock %}
