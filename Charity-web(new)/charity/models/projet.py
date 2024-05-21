@@ -13,7 +13,7 @@ class Projet(db.Model):
     description = db.Column(db.String(255), nullable=False)
     image = db.Column(db.String(255), nullable=False)
     categorie_id = db.Column(db.Integer, db.ForeignKey('categorie.id'), nullable=False)
-    categorie = db.relationship('Categorie', backref=db.backref('projets', lazy=True))
+    categorie = db.relationship('Categorie', backref=db.backref('projet', lazy=True))
 
     def save_image(self, image_file):
         if image_file:

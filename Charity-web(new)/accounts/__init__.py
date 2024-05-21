@@ -14,7 +14,7 @@ def register():
             prenom = request.form['prenom']
             username = request.form['username']
             password = request.form['password']
-            new_user = User(nom=nom, prenom=prenom, username=username)
+            new_user = User(nom= nom, prenom= prenom, username=username)
             new_user.set_password(password)
             db.session.add(new_user)
             db.session.commit()

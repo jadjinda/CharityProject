@@ -9,4 +9,4 @@ class Don(db.Model):
     telephone = db.Column(db.String(10), nullable=False)
     modePayement = db.Column(db.String(10), nullable=False)
     projet_id = db.Column(db.Integer, db.ForeignKey('projet.id'), nullable=False)
-    projet = db.relationship('projet', backref=db.backref('dons', lazy=True))
+    projet = db.relationship('Projet', backref=db.backref('dons', lazy=True))

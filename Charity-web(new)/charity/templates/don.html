@@ -16,55 +16,30 @@
                     <div class="tab-content">
                         <!-- credit card info-->
                         <div id="credit-card" class="tab-pane fade show active pt-3">
-                            <form role="form" onsubmit="event.preventDefault()">
-                                <input class="form-control" name="projet_id" value="{{ projet.id}}" hidden>
-                                <div class="row">
-                                    <div class="col-sm-8">
-                                        <div class="form-group">
-                                            <label>
-                                                <span class="hidden-xs">
-                                                    <h6>Un nom</h6>
-                                                </span>
-                                            </label>
-                                            <div class="input-group">
-                                                <input type="text" placeholder="Identifiant" name="" class="form-control" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-group mb-4">
-                                            <label>
-                                                Montant du don
-                                            </label>
-                                            <input type="text" required class="form-control" placeholder="montant">
-                                        </div>
-                                    </div>
+                            <form class="row g-3" action="{{ url_for('charity_web.don',projetId=projet.id) }}" method="post">
+                                <input class="form-control" name="projet_id" value="{{ projet.id}}" id="projet_id" hidden>
+                                <div class="col-auto">
+                                    <label for="input" class="visually-hidden">Un nom</label>
+                                    <input type="text" class="form-control" id="identifiant" placeholder="identifiant" name="identifiant">
                                 </div>
-                                <div class="col-sm-4">
-                                        <div class="form-group mb-4">
-                                            <label data-toggle="tooltip">
-                                                Téléphone
-                                            </label>
-                                            <input type="text" required class="form-control" placeholder="Numéro de mobile money">
-                                        </div>
+                                <div class="col-auto">
+                                    <label for="input2" class="visually-hidden">Montant du don</label>
+                                    <input type="text" class="form-control" id="montant" placeholder="montant" name="montant">
                                 </div>
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <h6>Tmoney</h6>
-                                            <input type="radio">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <h6>Flooz</h6>
-                                            <input type="radio">
-                                        </div>
-                                    </div>
+                                <div class="input-group">
+                                    <span class="input-group-text" id="basic-addon1">Télephone</span>
+                                    <input type="text" class="form-control" id="telephone" name="telephone" placeholder="telephone" aria-label="Username" aria-describedby="basic-addon1">
                                 </div>
-                                <div class="card-footer"> <button type="button" class="subscribe btn btn-primary btn-block shadow-sm">Close</button>
-                                     <button type="button" class="subscribe btn btn-primary btn-block shadow-sm"> Confirm Payment </button>
+                                <div class="col-auto">
+                                    <input class="form-check-input" type="radio" id="tmoney" name="modePayement" value="Tmoney">
+                                    <label class="form-check-label" for="flexRadioDefault1">Tmoney</label>
                                 </div>
+                                <div class="col-auto">
+                                    <input class="form-check-input" type="radio" id="flooz" name="modePayement" value="flooz">
+                                    <label class="form-check-label" for="flexRadioDefault1">Flooz</label>
+                                </div>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Confirm Payment</button>
                             </form>
                         </div>
                     </div> <!-- End -->

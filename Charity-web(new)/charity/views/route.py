@@ -18,8 +18,15 @@ def details(projetId):
     return render_template('details.html', retour=details)
 
 
-@web_charity_bp.route("/don", methods=['POST'])
-def don():
+@web_charity_bp.route("/gift/<int:projetId>")
+def gift(projetId):
+    projet = next((projet for projet in projets
+                    if projet["id"] == projetId), None)
+    return render_template('don.html',projet=projet)
+
+
+@web_charity_bp.route("/don/<int:projetId>", methods=['POST'])
+def don(projetId):
     try:
         identifiant = request.form['identifiant']
         montant = request.form['montant']
@@ -48,8 +55,8 @@ def don():
         db.session.add(don)
         db.session.commit()
         flash('Merci pour votre don.', 'succes')
-        return redirect(url_for('charity_web.details'))
+        return redirect(url_for('charity_web.gift',projetId=projetId))
     except Exception as e:
         print(e)
-        flash('Votre don a "échoué.', 'error')
-        return redirect(url_for('charity_web.details'))
+        flash('Votre don a échoué.', 'error')
+        return redirect(url_for('charity_web.gift',projetId=projetId))

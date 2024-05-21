@@ -23,7 +23,7 @@
           </p>
 
           <hr />
-          <a href="{{ url_for('charity_web.don')}}" class="btn btn-primary shadow-0"> <i class="me-1 fa fa-shopping-basket"></i> Faire un don</a>
+          <a href="{{ url_for('charity_web.gift', projetId=retour.id)}}" class="btn btn-primary shadow-0"> <i class="me-1 fa fa-shopping-basket"></i> Faire un don</a>
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPayement">
                 Modal
@@ -32,46 +32,5 @@
       </main>
     </div>
   </div>
-    <!-- Modal -->
-<div class="modal fade" id="modalPayement" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form class="row g-3" action="{{ url_for('charity_web.don') }}" method="post">
-            <div class="col-auto">
-                <label for="input" class="visually-hidden">Un nom</label>
-                <input type="text" class="form-control" id="identifiant" placeholder="identifiant">
-            </div>
-            <div class="col-auto">
-                <label for="input2" class="visually-hidden">Montant du don</label>
-                <input type="text" class="form-control" id="montant" placeholder="montant">
-            </div>
-            <div class="input-group">
-                <span class="input-group-text" id="basic-addon1">Télephone</span>
-                <input type="text" class="form-control" id="telephone" placeholder="telephone" aria-label="Username" aria-describedby="basic-addon1">
-            </div>
-            <div class="col-auto">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                <label class="form-check-label" for="flexRadioDefault1">Tmoney</label>
-            </div>
-            <div class="col-auto">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                <label class="form-check-label" for="flexRadioDefault1">Flooz</label>
-            </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Confirm Payment</button>
-      </div>
-    </div>
-  </div>
-</div>
 </section>
 {% endblock %}
